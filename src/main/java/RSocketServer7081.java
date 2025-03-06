@@ -18,7 +18,7 @@ public class RSocketServer7081 {
                                         return Mono.just(DefaultPayload.create("Server 2 response"))
                                                 .delayElement(Duration.ofMillis(100));
                                     }))
-                    .bindNow(TcpServerTransport.create(7081));
+                    .bindNow(TcpServerTransport.create("127.0.0.1", 7081));
             while(true) {
                 try {
                     TimeUnit.MILLISECONDS.sleep(1000000);
