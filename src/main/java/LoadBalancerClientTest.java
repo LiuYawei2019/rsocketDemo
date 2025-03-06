@@ -20,9 +20,9 @@ public class LoadBalancerClientTest {
 
     public static void main(String[] args) {
         List<LoadbalanceTarget> targets = new ArrayList<>();
-        targets.add(LoadbalanceTarget.from("7080", TcpClientTransport.create("172.16.42.135",7080)));
-        targets.add(LoadbalanceTarget.from("7081", TcpClientTransport.create("172.16.42.135",7081)));
-        targets.add(LoadbalanceTarget.from("7082", TcpClientTransport.create("172.16.42.135",7082)));
+        targets.add(LoadbalanceTarget.from("7080", TcpClientTransport.create("127.0.0.1",7080)));
+        targets.add(LoadbalanceTarget.from("7081", TcpClientTransport.create("127.0.0.1",7081)));
+        targets.add(LoadbalanceTarget.from("7082", TcpClientTransport.create("127.0.0.1",7082)));
 
         Sinks.Many<List<LoadbalanceTarget>> targetsSink = Sinks.many().replay().latest();
         targetsSink.tryEmitNext(targets);
